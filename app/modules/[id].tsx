@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Markdown from "react-native-markdown-display";
 import { loadModules, loadMarkdown } from "../../src/services/markdownLoader";
 import AudioPlayer from "../../src/components/AudioPlayer";
-import { ModuleInterface } from "../model/ModuleInterface";
+import { ModuleInterface } from "@/model/ModuleInterface";
 
 export default function ModuleViewer() {
   const { id } = useLocalSearchParams();

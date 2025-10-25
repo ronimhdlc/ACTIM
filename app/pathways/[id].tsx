@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import { Card, Text } from "react-native-paper";
 import { loadPathways, loadModules } from "../../src/services/markdownLoader";
-import { ModuleInterface } from "../model/ModuleInterface";
+import { ModuleInterface } from "@/model/ModuleInterface";
 
 export default function PathwayDetail() {
   const { id } = useLocalSearchParams();
