@@ -1,4 +1,3 @@
-// /app/pathways/[id].tsx
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
