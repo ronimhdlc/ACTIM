@@ -3,21 +3,22 @@ import { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import { Card, Text } from "react-native-paper";
 import { loadPathways, loadModules } from "../../src/services/markdownLoader";
+import { ModuleInterface } from "../model/ModuleInterface";
 
 export default function PathwayDetail() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
-  const [modules, setModules] = useState([]);
+  const [modules, setModules] = useState<ModuleInterface[]>([]);
 
   useEffect(() => {
     (async () => {
       const paths = await loadPathways();
-      const p = paths.find((x) => x.pathwayId === id);
+      const p = paths.find((x: any) => x.pathwayId === id);
       const all = await loadModules();
-      const mods = all.filter((m) => p.moduleIds.includes(m.moduleId));
+      const mods = all.filter((m: any) => p.moduleIds.includes(m.moduleId));
       setModules(mods);
     })();
-  }, []);
+  }, [id]);
 
   return (
     <ScrollView style={{ padding: 16 }}>

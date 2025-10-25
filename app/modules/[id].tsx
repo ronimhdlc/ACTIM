@@ -5,21 +5,22 @@ import { useEffect, useState } from "react";
 import Markdown from "react-native-markdown-display";
 import { loadModules, loadMarkdown } from "../../src/services/markdownLoader";
 import AudioPlayer from "../../src/components/AudioPlayer";
+import { ModuleInterface } from "../model/ModuleInterface";
 
 export default function ModuleViewer() {
   const { id } = useLocalSearchParams();
   const [content, setContent] = useState("");
-  const [module, setModule] = useState(null);
+  const [module, setModule] = useState<ModuleInterface>();
 
   useEffect(() => {
     (async () => {
       const modules = await loadModules();
-      const m = modules.find((x) => x.moduleId === id);
+      const m = modules.find((x: any) => x.moduleId === id);
       setModule(m);
       const text = await loadMarkdown(m.markdownPath);
       setContent(text);
     })();
-  }, []);
+  }, [id]);
 
   if (!module) return null;
 

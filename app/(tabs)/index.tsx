@@ -4,9 +4,16 @@ import { ScrollView } from "react-native";
 import { Button, Card, Text } from "react-native-paper";
 import { loadPathways } from "../../src/services/markdownLoader";
 
+interface Pathway {
+  pathwayId: string;
+  name: string;
+  description: string;
+  moduleIds: string[];
+}
+
 export default function HomeScreen() {
   const router = useRouter();
-  const [pathways, setPathways] = useState([]);
+  const [pathways, setPathways] = useState<Pathway[]>([]);
 
   useEffect(() => {
     loadPathways().then(setPathways);
