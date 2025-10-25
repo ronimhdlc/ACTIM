@@ -1,3 +1,4 @@
+// /app/(tabs)/_layout.tsx
 import { Tabs } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
