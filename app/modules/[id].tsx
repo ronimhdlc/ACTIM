@@ -1,25 +1,32 @@
-// /modules/[id].tsx
 import { useLocalSearchParams } from "expo-router";
-import { ScrollView, View } from "react-native";
-import { Text, Button } from "react-native-paper";
 import { useEffect, useState } from "react";
+import { ScrollView, View } from "react-native";
 import Markdown from "react-native-markdown-display";
-import { loadModules, loadMarkdown } from "../../src/services/markdownLoader";
+import { Button, Text } from "react-native-paper";
 import AudioPlayer from "../../src/components/AudioPlayer";
-import { ModuleInterface } from "@/model/ModuleInterface";
+import { loadMarkdown, loadModules } from "../../src/services/markdownLoader";
+import {
+  getFavorites,
+  toggleFavorite,
+} from "../../src/services/storageService";
 
 export default function ModuleViewer() {
   const { id } = useLocalSearchParams();
+  const [module, setModule] = useState<any>(null);
   const [content, setContent] = useState("");
-  const [module, setModule] = useState<ModuleInterface>();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const modules = await loadModules();
-      const m = modules.find((x: any) => x.moduleId === id);
+      const allModules = await loadModules();
+      const m = allModules.find((x: any) => x.moduleId === id);
       setModule(m);
-      const text = await loadMarkdown(m.markdownPath);
-      setContent(text);
+
+      const md = await loadMarkdown(m.markdownPath);
+      setContent(md);
+
+      const favs = await getFavorites();
+      setIsFavorite(favs.includes(m.moduleId));
     })();
   }, [id]);
 
@@ -27,15 +34,24 @@ export default function ModuleViewer() {
 
   return (
     <ScrollView style={{ padding: 16 }}>
-      <Text variant="headlineSmall" style={{ marginBottom: 12 }}>
+      <Text variant="headlineSmall" style={{ marginBottom: 8 }}>
         {module.title}
       </Text>
       <Markdown>{content}</Markdown>
-      <View style={{ marginVertical: 20 }}>
+
+      <View style={{ marginVertical: 16 }}>
         <AudioPlayer source={module.audioPath} />
       </View>
-      <Button mode="outlined" icon="note-outline">
-        Tambah Catatan
+
+      <Button
+        mode={isFavorite ? "contained-tonal" : "outlined"}
+        icon="heart-outline"
+        onPress={async () => {
+          const state = await toggleFavorite(module.moduleId);
+          setIsFavorite(state);
+        }}
+      >
+        {isFavorite ? "Hapus dari Favorit" : "Tambahkan ke Favorit"}
       </Button>
     </ScrollView>
   );

@@ -1,30 +1,13 @@
 modules:
-  - module_id: fundamentals_intro
-    title: "Pengantar ACT: Fleksibilitas Psikologis & Hidup Bermakna"
-    markdown_path: "assets/modules/fundamentals_intro.md"
-    audio_path: "assets/audio/fundamentals_intro.mp3"
-    category: "fundamentals"
-
-  - module_id: tug_of_war_monster
-    title: "Tarik Tambang dengan Monster"
-    markdown_path: "assets/modules/tug_of_war_monster.md"
-    audio_path: "assets/audio/tug_of_war_monster.mp3"
-    category: "fundamentals"
-
-  - module_id: mindfulness_3_breaths_5_senses
-    title: "3 Napas & 5 Indra"
-    markdown_path: "assets/modules/mindfulness_3_breaths_5_senses.md"
-    audio_path: "assets/audio/mindfulness_3_breaths_5_senses.mp3"
-    category: "mindfulness"
-
-  - module_id: mindfulness_anchor_breath
-    title: "Anchor ke Napas"
-    markdown_path: "assets/modules/mindfulness_anchor_breath.md"
-    audio_path: "assets/audio/mindfulness_anchor_breath.mp3"
-    category: "mindfulness"
-
-  - module_id: hdtf_01_notice_name
-    title: "Namai untuk Menjinakkan"
-    markdown_path: "assets/modules/hdtf_01_notice_name.md"
-    audio_path: "assets/audio/hdtf_01_notice_name.mp3"
-    category: "difficult_experiences"
+  - moduleId: intro
+    title: Pengenalan ACT
+    markdownPath: "assets/modules/intro.md"
+    audioPath: "intro.mp3"
+  - moduleId: acceptance
+    title: Latihan Penerimaan
+    markdownPath: "assets/modules/acceptance.md"
+    audioPath: "acceptance.mp3"
+  - moduleId: defusion
+    title: Lepas dari Pikiran
+    markdownPath: "assets/modules/defusion.md"
+    audioPath: "defusion.mp3"

@@ -1,23 +1,5 @@
 pathways:
-  - pathway_id: fundamentals_path
-    name: "Fundamentals ACT"
-    description: "Dasar-dasar Acceptance and Commitment Therapy"
-    category: "fundamentals"
-    module_ids:
-      - fundamentals_intro
-      - tug_of_war_monster
-
-  - pathway_id: mindfulness_path
-    name: "Mindfulness Practice"
-    description: "Latihan mindfulness untuk hidup lebih sadar"
-    category: "mindfulness"
-    module_ids:
-      - mindfulness_3_breaths_5_senses
-      - mindfulness_anchor_breath
-
-  - pathway_id: difficult_experiences_path
-    name: "Menghadapi Pengalaman Sulit"
-    description: "Teknik untuk menghadapi pikiran dan perasaan sulit"
-    category: "difficult_experiences"
-    module_ids:
-      - hdtf_01_notice_name
+  - pathwayId: act_basics
+    name: Dasar ACT
+    description: Mulai memahami konsep ACT dan latihan sederhana.
+    moduleIds: [intro, acceptance, defusion]
